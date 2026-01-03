@@ -5,102 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LHS Litter Club</title>
   <meta name="description" content="LHS Litter Club — monthly litter cleanups around the Lincoln community." />
+
   <style>
     :root{
-      --bg0:#0b1020;
-      --bg1:#0f172a;
-      --card:rgba(255,255,255,.08);
-      --card2:rgba(255,255,255,.10);
-      --stroke:rgba(255,255,255,.14);
-      --text:#e5e7eb;
-      --muted:#a7b0c0;
-      --accent:#fb4b3a;     /* warm red */
-      --accent2:#f59e0b;    /* amber */
-      --good:#22c55e;
-      --link:#93c5fd;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      /* Red–Yellow theme (bright, school-spirit vibe) */
+      --bg0:#fff7db;                 /* warm paper */
+      --bg1:#ffe8a3;                 /* soft yellow */
+      --card: rgba(255,255,255,.78);
+      --card2: rgba(255,255,255,.90);
+      --stroke: rgba(185, 28, 28, .22);
+      --text:#3b0a0a;                /* deep maroon */
+      --muted:#7a2e2e;
+      --accent:#d61f1f;              /* strong red */
+      --accent2:#ffb000;             /* golden yellow */
+      --good:#16a34a;
+      --link:#b91c1c;
+      --shadow: 0 18px 60px rgba(120, 18, 18, .18);
       --radius: 18px;
       --max: 1100px;
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
-      background: var(--bg1);   /* solid color only */
       line-height: 1.55;
       overflow-x:hidden;
+
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(214,31,31,.22), transparent 60%),
+        radial-gradient(900px 560px at 85% 0%, rgba(255,176,0,.35), transparent 60%),
+        radial-gradient(1000px 700px at 50% 110%, rgba(255,120,0,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
     a{ color: var(--link); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+    a:hover{ text-decoration:underline; color:#7f1d1d; }
 
     /* Layout */
     .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px 64px; }
 
     /* Top nav */
     .nav{
-      display:flex; align-items:center; justify-content:space-between;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       gap:14px;
       padding: 14px 16px;
       border: 1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
       border-radius: 999px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      box-shadow: 0 10px 30px rgba(120, 18, 18, .16);
       backdrop-filter: blur(10px);
       position: sticky;
       top: 14px;
       z-index: 10;
     }
+
     .brand{ display:flex; align-items:center; gap:10px; min-width: 220px; }
+    .brand b{ letter-spacing:.2px; }
+
     .logo{
-      width: 50px; height: 50px; border-radius: 12px;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      overflow:hidden; /* ensures rounded corners clip the image */
+      box-shadow: 0 10px 22px rgba(214,31,31,.18);
+      border: 1px solid rgba(185, 28, 28, .20);
+      background: rgba(255,255,255,.65);
+      flex: 0 0 auto;
     }
-    .logo img {
+    .logo img{
       width: 100%;
       height: 100%;
-      object-fit: contain;  /* use "cover" if you want it cropped instead */
+      object-fit: cover; /* square logo: fill nicely */
       display: block;
     }
-    .brand b{ letter-spacing:.2px; }
+
     .navlinks{ display:flex; gap: 14px; flex-wrap:wrap; justify-content:center; }
     .navlinks a{
-      color: var(--text);
+      color: rgba(59,10,10,.92);
       padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid transparent;
       transition: .18s ease;
       font-size: 14px;
-      opacity: .92;
+      background: transparent;
     }
     .navlinks a:hover{
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
+      border-color: rgba(185, 28, 28, .22);
+      background: rgba(255,255,255,.55);
       text-decoration:none;
-      opacity:1;
     }
+
     .cta-row{ display:flex; align-items:center; gap:10px; min-width: 260px; justify-content:flex-end; }
     .pill{
       font-size: 12px;
-      color: rgba(229,231,235,.92);
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
+      color: rgba(59,10,10,.88);
+      border: 1px solid rgba(185, 28, 28, .20);
+      background: rgba(255,255,255,.55);
       padding: 7px 10px;
       border-radius: 999px;
       white-space:nowrap;
     }
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: linear-gradient(135deg, rgba(251,75,58,.95), rgba(245,158,11,.90));
-      color:#0b1020;
-      font-weight: 700;
+      border: 1px solid rgba(185, 28, 28, .22);
+      background: linear-gradient(135deg, rgba(214,31,31,.95), rgba(255,176,0,.92));
+      color: #2a0707;
+      font-weight: 800;
       font-size: 14px;
-      box-shadow: 0 16px 40px rgba(251,75,58,.22);
+      box-shadow: 0 16px 40px rgba(214,31,31,.18);
       transition: transform .12s ease, filter .12s ease;
       cursor:pointer;
       user-select:none;
@@ -116,12 +137,13 @@
       gap: 18px;
       align-items: stretch;
     }
+
     .heroCard{
       border-radius: var(--radius);
       border: 1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.72));
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
       overflow:hidden;
       position: relative;
       padding: 22px 22px 18px;
@@ -131,8 +153,8 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(600px 220px at 15% 15%, rgba(251,75,58,.25), transparent 60%),
-        radial-gradient(560px 220px at 75% 10%, rgba(245,158,11,.18), transparent 60%);
+        radial-gradient(700px 240px at 10% 0%, rgba(214,31,31,.20), transparent 60%),
+        radial-gradient(700px 240px at 80% 10%, rgba(255,176,0,.28), transparent 60%);
       pointer-events:none;
       z-index:0;
     }
@@ -141,79 +163,104 @@
     .kicker{
       display:inline-flex; gap:8px; align-items:center;
       font-size: 12px;
-      color: rgba(229,231,235,.88);
+      color: rgba(59,10,10,.82);
       padding: 6px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(185, 28, 28, .18);
+      background: rgba(255,255,255,.55);
       margin-bottom: 14px;
       width: fit-content;
     }
+
     .dot{
       width: 8px; height: 8px; border-radius: 999px;
       background: var(--good);
-      box-shadow: 0 0 0 4px rgba(34,197,94,.12);
+      box-shadow: 0 0 0 4px rgba(22,163,74,.12);
     }
+
     h1{
       margin:0 0 10px 0;
       font-size: clamp(28px, 4vw, 42px);
       letter-spacing: -.6px;
       line-height: 1.1;
     }
+
     .lead{
       margin:0;
-      color: rgba(229,231,235,.88);
+      color: rgba(59,10,10,.86);
       font-size: 15px;
       max-width: 62ch;
     }
+
     .heroActions{
       margin-top: 16px;
       display:flex;
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .ghost{
       display:inline-flex; align-items:center; justify-content:center;
       padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight: 650;
+      border: 1px solid rgba(185, 28, 28, .22);
+      background: rgba(255,255,255,.55);
+      color: rgba(59,10,10,.92);
+      font-weight: 750;
       font-size: 14px;
       transition: .15s ease;
     }
-    .ghost:hover{ background: rgba(255,255,255,.10); text-decoration:none; }
+    .ghost:hover{ background: rgba(255,255,255,.72); text-decoration:none; }
 
     /* Sidebar card */
     .side{
       border-radius: var(--radius);
       border: 1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
-      box-shadow: 0 16px 50px rgba(0,0,0,.40);
-      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.70));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
       padding: 18px;
       display:flex;
       flex-direction: column;
       gap: 12px;
       min-height: 280px;
     }
-    .side h3{ margin: 2px 0 0; font-size: 14px; letter-spacing:.2px; color: rgba(229,231,235,.92); }
-    .side p{ margin:0; color: var(--muted); font-size: 13px; }
+
+    .side h3{
+      margin: 2px 0 0;
+      font-size: 14px;
+      letter-spacing:.2px;
+      color: rgba(59,10,10,.92);
+    }
+
     .infoGrid{
       display:grid;
       grid-template-columns: 1fr;
       gap: 10px;
       margin-top: 6px;
     }
+
     .infoItem{
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(185, 28, 28, .18);
+      background: rgba(255,255,255,.55);
       border-radius: 14px;
       padding: 12px;
     }
-    .label{ font-size: 11px; color: rgba(229,231,235,.70); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .12em; }
-    .value{ font-size: 14px; font-weight: 750; color: rgba(229,231,235,.95); }
+
+    .label{
+      font-size: 11px;
+      color: rgba(59,10,10,.72);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .value{
+      font-size: 14px;
+      font-weight: 850;
+      color: rgba(59,10,10,.95);
+    }
+
     .hint{ font-size: 12px; color: var(--muted); margin-top: 3px; }
 
     /* Sections */
@@ -223,24 +270,29 @@
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
     }
+
     .card{
       grid-column: span 6;
       border-radius: var(--radius);
       border: 1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-      box-shadow: 0 14px 45px rgba(0,0,0,.35);
-      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.70));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
       padding: 18px 18px 16px;
       position:relative;
       overflow:hidden;
     }
+
     .card:after{
       content:"";
       position:absolute;
       inset:-2px;
-      background: radial-gradient(520px 180px at 10% 0%, rgba(59,130,246,.14), transparent 60%);
+      background:
+        radial-gradient(520px 180px at 10% 0%, rgba(214,31,31,.12), transparent 60%),
+        radial-gradient(520px 180px at 90% 0%, rgba(255,176,0,.14), transparent 60%);
       pointer-events:none;
     }
+
     .card > *{ position:relative; z-index:1; }
 
     .card h2{
@@ -248,9 +300,10 @@
       font-size: 20px;
       letter-spacing: -.2px;
     }
+
     .card p{
       margin:0;
-      color: rgba(229,231,235,.85);
+      color: rgba(59,10,10,.86);
       font-size: 14px;
     }
 
@@ -261,22 +314,24 @@
       display:grid;
       gap: 10px;
     }
+
     .li{
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(185, 28, 28, .18);
+      background: rgba(255,255,255,.55);
       border-radius: 14px;
       padding: 12px;
-      color: rgba(229,231,235,.90);
+      color: rgba(59,10,10,.88);
       font-size: 13px;
     }
-    .li b{ color: rgba(229,231,235,.98); }
+
+    .li b{ color: rgba(59,10,10,.96); }
 
     /* Footer */
     footer{
       margin-top: 26px;
-      border-top: 1px solid rgba(255,255,255,.14);
+      border-top: 1px solid rgba(185, 28, 28, .20);
       padding-top: 18px;
-      color: rgba(229,231,235,.70);
+      color: rgba(59,10,10,.70);
       font-size: 12px;
       display:flex;
       justify-content: space-between;
@@ -304,15 +359,15 @@
     <!-- NAV -->
     <nav class="nav" aria-label="Primary">
       <div class="brand">
-        <div class="logo" aria-hidden="true"><img src="logo.PNG"></div>
+        <div class="logo" aria-hidden="true"><img src="logo.PNG" alt=""></div>
         <div>
           <b>LHS Litter Club</b><br />
-          <span style="font-size:12px;color:rgba(229,231,235,.70)">Cleanups • Service • Community</span>
+          <span style="font-size:12px;color:rgba(59,10,10,.70)">Cleanups • Service • Community</span>
         </div>
       </div>
 
       <div class="navlinks" aria-label="Section links">
-        <a href="#intro">What</a>
+        <a href="#what">What</a>
         <a href="#participate">Participate</a>
         <a href="#hours">Volunteer Hours</a>
       </div>
@@ -335,7 +390,6 @@
         </p>
 
         <div class="heroActions">
-          <!-- Replace # with real links when you have them -->
           <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd2Ll26zwNaluUnfY7ROZSSYj4wE1ESzuFYXnGCRz9Xq3n1Xg/viewform" aria-label="Join email list">Join our email list</a>
           <a class="ghost" href="#participate" aria-label="Learn how to participate">How to participate</a>
         </div>
@@ -375,19 +429,19 @@
         </p>
 
         <ul class="list" aria-label="What to expect">
-          <li class="li"><b>Low commitment:</b> come when you can.</li>
-          <li class="li"><b>Visible impact:</b> cleaner sidewalks, parks, and streets.</li>
-          <li class="li"><b>Community-first:</b> help Lincoln feel safer and better cared for.</li>
+          <li class="li"><b>Low commitment:</b> Come when you can.</li>
+          <li class="li"><b>Visible impact:</b> Cleaner sidewalks, parks, and streets.</li>
+          <li class="li"><b>Exercise:</b> Keep the city, and yourself, healthy.</li>
         </ul>
       </article>
 
       <article class="card" id="participate">
         <h2>How do I Participate?</h2>
         <p>
-          You can participate by either signing up for <a href="#" aria-label="Email list link">our email list</a> or by checking
+          You can participate by either signing up for <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2Ll26zwNaluUnfY7ROZSSYj4wE1ESzuFYXnGCRz9Xq3n1Xg/viewform" aria-label="Email list link">our email list</a> or by checking
           the top of this website to see when the next cleanup will be. We send out emails every other week, which include the date,
           time, and location of the cleanup, as well as a link to the sign-up form. This information is also found at the top of the website.
-          You must fill out the <a href="#" aria-label="Sign-up sheet link">sign-up sheet</a> so that we know how many supplies we will need.
+          You must fill out the <a href="https://docs.google.com/forms/u/1/d/1guAOJ61rlnhWtjvBM1EadulwUDCbhQYzjadUejCZ8b0/edit" aria-label="Sign-up sheet link">sign-up sheet</a> so that we know how many supplies we will need.
           Additionally, the sign-up sheet doubles as a permission slip.
         </p>
 
@@ -413,7 +467,6 @@
   </div>
 
   <script>
-    // tiny enhancement: current year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
